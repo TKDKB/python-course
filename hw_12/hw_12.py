@@ -23,11 +23,11 @@ class Coffee(Product):
 
 class AbstractShop(ABC):
     @abstractmethod
-    def add_product(self):
+    def add_product(self, object: Product|Furniture):
         pass
 
     @abstractmethod
-    def sell_product(self):
+    def sell_product(self, object: Product|Furniture):
         pass
 
     @abstractmethod
@@ -54,10 +54,7 @@ class RealShop(AbstractShop):
             raise NonProductError("переданный объект не является продуктом!")
 
     def all_products(self):
-        result = ""
-        for el in self.product_list:
-            result += f"{el}\n{'-' * 100}\n"
-        return result
+        return self.product_list
 
 @dataclass
 class Furniture(Product):
@@ -90,10 +87,7 @@ class FurnitureShop(AbstractShop):
             raise NonProductError("переданный объект не является продуктом!")
 
     def all_products(self):
-        result = ""
-        for el in self.product_list:
-            result += f"{el}\n{'-' * 100}\n"
-        return result
+        return self.product_list
 
 
 coffee_1 = Coffee(id=1, name="coffe_1", price=5.5, volume=150, type="latte")

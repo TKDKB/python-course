@@ -1,39 +1,38 @@
 create database if not exists lesson14;
 
 use lesson14;
+drop tables users, orders, products, seller;
 
 create table if not exists users (
-	id int primary key,  -- Уникальный идентификатор
-	username varchar(64) not null,  -- длина 64 символа (обязательно для заполнения)
+	id int primary key auto_increment,  -- Уникальный идентификатор
+	username varchar(64) not null unique,  -- длина 64 символа (обязательно для заполнения)
     password varchar(64) not null,
-    email varchar(20) null unique
-);
-
-create table if not exists orders(
-	id  int primary key,
-    user_id int,
-    product_id int,
-    count int
-);
-
-create table if not exists products(
-	id int primary key,
-    name varchar(20),
-    cost int,
-    count int,
-    seller_id int
+    email varchar(20) not null unique
 );
 
 create table if not exists seller(
-	id int primary key,
-    company varchar(60),
-    phone int unique
+	id int primary key auto_increment,
+    company varchar(60) not null,
+    phone int not null unique
 );
 
-alter table orders add foreign key (user_id) references users (id);
-alter table orders add foreign key (product_id) references products (id);
+create table if not exists products(
+	id int primary key auto_increment,
+    name varchar(20) not null unique,
+    cost int not null,
+    count int not null,
+    seller_id int,
+    foreign key (seller_id) references seller (id)
+);
 
-alter table products add foreign key (seller_id) references seller (id);
+create table if not exists orders(
+	id  int primary key auto_increment,
+    user_id int,
+    product_id int,
+    count int not null,
+	foreign key (user_id) references users (id),
+    foreign key (product_id) references products (id)
+);
 
 select * from users;
 

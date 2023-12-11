@@ -23,6 +23,9 @@ class Note(Base):
     content = Column(Text, unique=False, nullable=False)
     created_at = Column(DateTime, default=datetime.now())
 
+    def __str__(self):
+        return f"Note: {self.uuid}"
+
 
 def create_tables():
     Base.metadata.create_all(engine)

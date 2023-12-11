@@ -13,7 +13,8 @@ create_note("7", "text")
 @app.route("/", methods=["GET"])
 def home_page_view():
     all_notes = get_all_notes()
-    return f"<h1>{all_notes}</h1>"
+    print(all_notes)  # В консоли вывод
+    return f"<h1>{str(all_notes)}</h1>"
 
 @app.route("/new_note", methods=["GET"])
 def create_note_form():
@@ -46,29 +47,27 @@ def create_note_post():
 
 
 @app.route("/<note_uuid>", methods=["GET"])
-def get_note_view(uuid: str):
-    """Обрабатываем форму регистрации"""
-    try:
-        note = get_note(uuid)
-    except exc.NoResultFound:
-        return Response("No note with such uuid.", status=404)
-    return f"""
-            <h1>UUID{uuid}</h1>
-            <p>title: {note.title}</p>
-            <p>content: {note.content}</p>
-        """
+def get_note_view(note_uuid: str):
+    if len(note_uuid) == 36:
 
-@app.route("/<note_title>", methods=["GET"])
-def get_note_uuid(title: str):
-    """Обрабатываем форму регистрации"""
-    try:
-        note = get_note_uuid(title)
-    except exc.NoResultFound:
-        return Response("No note with such uuid.", status=404)
-    return f"""
-            <h1>UUID{note.uuid}</h1>
-            <p>title: {note.title}</p>
-        """
+        try:
+            note = get_note(note_uuid)
+        except exc.NoResultFound:
+            return Response("No note with such uuid.", status=404)
+        return f"""
+                <h1>UUID{note.uuid}</h1>
+                <p>title: {note.title}</p>
+                <p>content: {note.content}</p>
+            """
+    else:
+        try:
+            note = get_note_uuid(note_uuid)
+        except exc.NoResultFound:
+            return Response("No note with such title.", status=404)
+        return f"""
+                <h1>UUID{note.uuid}</h1>
+                <p>title: {note.title}</p>
+            """
 
 
 

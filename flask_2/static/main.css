@@ -1,0 +1,39 @@
+.header{
+    color: white;
+    background-color: #201A20;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+.background{
+    background-color: #6C6871;
+    color: white;
+}
+
+.note_preview{
+    padding: 20px;
+    margin: 5px;
+    border-radius: 8px;
+    border: #201A20 solid 1px;
+    width: 330px;
+    color: #201A20;
+    background-color: #D4E9DB;
+}
+
+.note_description{
+    padding: 20px;
+    margin: 5px;
+    border-radius: 8px;
+    border: #201A20 solid 1px;
+    width: 600px;
+    color: #201A20;
+    background-color: #D4E9DB;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}

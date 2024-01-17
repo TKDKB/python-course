@@ -1,0 +1,40 @@
+.input_form{
+    border-radius: 5px;
+    border: #8E8C8A solid 1px;
+    height: 20px;
+    padding-left: 8px;
+    color: #201A20;
+    background-color: #D4E9DB;
+}
+
+.input_form_content{
+    border-radius: 5px;
+    border: #8E8C8A solid 1px;
+    padding-left: 8px;
+    color: #201A20;
+    background-color: #D4E9DB;
+}
+
+.input_div{
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.form-button {
+    background-color: #201A20;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 25px;
+    cursor: pointer;
+}
+
+
+.form-button:hover {
+    box-shadow: 0 0 5px 3px rgba(138, 138, 138, 0.4);
+}
+
+.background{
+    background-color: #6C6871;
+    color: white;
+}

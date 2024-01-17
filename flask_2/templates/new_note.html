@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create note</title>
+    <link rel="stylesheet" href="/static_files/main.css">
+    <link rel="stylesheet" href="/static_files/input_form.css">
+
+</head>
+<body class="background">
+    <h1 class="header"> new note.</h1>
+    <form action="/new_note" method="post">
+        <div class="input_div">
+            <a href="/">
+                <button class="form-button">главная страница</button>
+            </a>
+        </div>
+        <div class="input_div">
+            <span>заголовок</span>
+            <div>
+                <input class="input_form" name="title" type="text">
+            </div>
+        </div>
+        <div class="input_div">
+            <span>текст заметки</span>
+            <div>
+                <textarea class="input_form_content" rows="20" cols="100" name="content"></textarea>
+            </div>
+        </div>
+        <div class="input_div">
+            <div>
+                <form method="post" action="/submit-form">
+                    <input class="form-button" type="submit" name="submit_button" value="создать">
+                </form>
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>

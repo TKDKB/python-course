@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static_files/main.css">
+    <link rel="stylesheet" href="/static_files/input_form.css">
+    <link rel="stylesheet" href="/static_files/button.css">
+</head>
+<body class="background">
+    <h2 class="header">{{ title }}</h2>
+
+    <div class="input_div">
+        <a href="/">
+            <button class="form-button">главная страница</button>
+        </a>
+    </div>
+
+    <div class="input_div">
+        UUID: {{ uuid }}
+    </div>
+
+    <div class="input_div">
+        creation time: {{ created_at }}
+    </div>
+
+    <div class="input_div">
+        content:
+        <div class="note_description">
+            {{ content }}
+        </div>
+    </div>
+
+</body>
+</html>

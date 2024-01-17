@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="/static_files/main.css">
+    <link rel="stylesheet" href="/static_files/input_form.css">
+</head>
+<body class="background">
+    <h1 class="header">notica.</h1>
+
+    <div>
+        <a href="/new_note">
+            <button class="form-button">создать заметку</button>
+        </a>
+    </div>
+    <div class="content">
+        {% for note in all_notes %}
+            <div class="note_preview">
+                <h3 >{{ note.title }}</h3>
+                <div>
+                    <a href="/{{ note.title }}">
+                        <button class="form-button">просмотр</button>
+                    </a>
+                </div>
+                <div>
+                    created at: {{ note.created_at }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

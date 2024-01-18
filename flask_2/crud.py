@@ -3,9 +3,17 @@ from datetime import datetime
 from models import Note, session
 
 
-def get_note(title: str) -> Note:
+def get_note_by_title(title: str) -> Note:
     with session() as conn:
         query = select(Note).where(Note.title == title)
+        # (User,) - one()
+        # User - scalar_one()
+        return conn.execute(query).scalar_one()
+
+
+def get_note_by_uuid(uuid: str) -> Note:
+    with session() as conn:
+        query = select(Note).where(Note.uuid == uuid)
         # (User,) - one()
         # User - scalar_one()
         return conn.execute(query).scalar_one()

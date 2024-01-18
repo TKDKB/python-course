@@ -1,5 +1,5 @@
 from flask import Flask, Response, request, render_template, redirect, url_for
-from crud import get_note, create_note, get_all_notes
+from crud import get_note_by_title, get_note_by_uuid, create_note, get_all_notes
 from sqlalchemy import exc
 from models import create_tables, drop_tables
 
@@ -33,7 +33,7 @@ def create_note_post():
             title=note_data["title"],
             content=note_data["content"],
         )
-        return redirect(url_for("get_note_view", search_field=note.title))
+        return redirect(url_for("get_note_view", search_field=note.uuid))
     else:
         return redirect(url_for("home_page_view"))
 
@@ -41,9 +41,9 @@ def create_note_post():
 @app.route("/<search_field>", methods=["GET"])
 def get_note_view(search_field: str):
     try:
-        note = get_note(search_field)
+        note = get_note_by_uuid(search_field)
     except exc.NoResultFound:
-        return Response("No note with such title.", status=404)
+        return Response("No note with such uuid.", status=404)
 
     return render_template(
         "note.html",
